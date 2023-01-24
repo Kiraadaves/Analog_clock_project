@@ -1,5 +1,5 @@
 body {
-	background-color: #5BC0F8;
+	background-color: #F7F5EB;
 	margin:  0;
 	padding: 0;
 	font-family: 'Courgette', cursive;
@@ -11,10 +11,12 @@ body {
 } 
 
 img {
-	width: 40px;
+	width: 30px;
 	position: absolute;
 	left: 50%;
 	top: 60px;
+	border: 2px solid #0081C9;
+	background-color: #FFC93C;
 	transform: translate(-50%); /*when you adjust the left and top, it doesnt stay in the middle exactly,this is why we use the transform/translate properties */
     z-index: 2; /*the .clock will have z-index of 1 as it will be at the bottom. the img and numbers will both have z-index of 2,the arrows 3 and the circle part at the center will be 4*/    
 }
@@ -34,7 +36,7 @@ img {
 	font-size:  45px;
 	color: #0081C9;
 	font-weight: bold;
-	text-shadow: 2px 3px 3px #5BC0F8; /* first value is for the horizontal and second valueis for the vertical while the third is for the blur radius followed by the color which can also be in rgba */
+	text-shadow: 2px 3px 3px #FFC93C; /* first value is for the horizontal and second valueis for the vertical while the third is for the blur radius followed by the color which can also be in rgba */
 }
 
 .twelve {
@@ -78,4 +80,59 @@ img {
     border-radius: 50%;
     box-shadow: 2px 2px 4px #0081C9;
     z-index: 4;
+}
+
+.arrows div {
+	background-color: #0081C9;
+	width: 8px;
+	height: 160px;
+	position: absolute; /* this is to prevent the arrows from affeccting the circle */
+	transform-origin: bottom center; /* transform origin helps us to move the arrow first to the bottom center and then 50% from the bottom */
+	bottom: 50%;
+	border: 1px solid #FFC93C;
+	box-shadow: 1px 1px 4px #0081C9;
+	border-radius: 50% 50% 0 0; /* first value applies to top-left corner, second value applies to top-right corner, third value applies to bottom-right corner, and fourth value applies to bottom-left corner */
+	z-index: 3; /* Before this the handle was below the logo, to move it to the top, we give it an index higher than that of the logo */
+}
+
+/* Next we change the posiion of the arrows */
+
+.arrows .hour { /* if you try to use just the class .hour as selector, changes made under the .arrows div will not be overriden due to priority of selectors, this is why we use .arrows .hour which is a higher selector and will override the properties we want to be changed */
+	transform: rotate(45deg); /* to seperate the arrow hands and move this one by 45 degrees */
+	height: 115px;	
+}
+
+.arrows .minutes {
+	transform: rotate(95deg);	
+}
+
+.arrows .seconds {
+	width: 2px;
+	height: 120px;
+}
+
+#footer {
+	position: absolute;
+	bottom: 0;
+	text-align: center;
+	background-color: #86E5FF;
+	border: 2px solid #0081C9;
+	box-shadow: 5px 3px 40px rgba(0, 0, 0, .7);
+}
+
+.fab {
+  margin: 3% 3% 0 3%;
+  background-color: #0081C9;
+  border: 1px solid #0081C9;
+}
+
+.fas {
+  margin: 3% 3% 0 3%;
+  background-color: #0081C9;
+  border: 1px solid #0081C9;
+}
+
+#footer p {
+	font-size: 8px;
+	margin-bottom: 0;
 }
